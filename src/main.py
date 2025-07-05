@@ -65,7 +65,7 @@ def generate_pages_recursive(dir_path_content, template_path, dest_dir_path, bas
         create_html_from_template(src_path, template_path, target_dest_dir, basepath)
 
 def initialize_static_site():
-    basepath = sys.argv[1] if len(sys.argv) > 1 else "/"
+    basepath = sys.argv[1] if len(sys.argv) > 1 else "/static-site-generator/"
 
     src_dir = os.path.dirname(os.path.abspath(__file__))
     project_root = os.path.dirname(src_dir)
