@@ -22,5 +22,13 @@ class HTMLNode():
         
         return html_string
     
+    def __eq__(self, node):
+        return (
+            self.tag == node.tag
+            and self.value == node.value
+            and self.children == node.children
+            and self.props == node.props
+        )
+    
     def __repr__(self):
         return f"HTMLNode({self.tag}, {self.value}, {self.children}, {self.props})"

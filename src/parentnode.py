@@ -5,15 +5,19 @@ class ParentNode(HTMLNode):
         super().__init__(tag=tag, children=children, props=props)
     
     def to_html(self):
-        if self.tag is None:
-            raise ValueError("Error: Parent node must have a tag")
-        
         if self.children is None:
             raise ValueError("Error: Parent node must have children")
         
         html_string = ""
-        
-        for node in self.children:
+
+        for i in range(len(self.children)):
+            node = self.children[i]
             html_string += node.to_html()
+            if i < len(self.children) - 1:
+                if node.tag is None and self.children[i + 1].tag is None:
+                    html_string += " "
+        
+        if self.tag is None:
+            return html_string
         
         return f'<{self.tag}>{html_string}</{self.tag}>'
